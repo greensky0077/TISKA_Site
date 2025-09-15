@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Generar QR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-50">
+  <div class="bg-white p-6 rounded-xl shadow w-full max-w-xl">
+    <h1 class="text-xl font-semibold mb-4">Generar código QR</h1>
+    <label class="text-sm">URL a codificar</label>
+    <input id="qrUrl" class="mt-1 w-full border rounded px-3 py-2"
+      value="https://edocumentos-economia-gob.mx/dgnm/protected/1.22-2023-03-Contratosocial/SAS-1.2-202303-585748.xml">
+    <div id="qrcode" class="mt-6 flex items-center justify-center"></div>
+    <div class="mt-6 flex gap-3">
+      <button id="btnGen" class="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-800">Generar</button>
+      <button id="btnDown" class="px-4 py-2 border rounded">Descargar PNG</button>
+    </div>
+  </div>
+
+  <script>
+    const qrc = new QRCode(document.getElementById("qrcode"), { text: "", width: 256, height: 256 });
+    document.getElementById('btnGen').onclick = () => {
+      qrc.clear();
+      qrc.makeCode(document.getElementById('qrUrl').value.trim());
+    };
+    document.getElementById('btnDown').onclick = () => {
+      const img = document.querySelector('#qrcode img');
+      if (!img) return;
+      const a = document.createElement('a');
+      a.href = img.src;
+      a.download = 'qr.png';
+      a.click();
+    };
+    document.getElementById('btnGen').click();
+  </script>
+</body>
+</html>

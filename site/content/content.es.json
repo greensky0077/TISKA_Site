@@ -1,0 +1,21 @@
+{
+    "hero_title": "Hacemos realidad grandes ideas",
+    "hero_sub": "Construcción, remodelación y mantenimiento con cumplimiento en tiempo y calidad.",
+    "features": [
+      { "title": "Tecnología de punta", "text": "Procesos modernos para máxima calidad." },
+      { "title": "Cumplimiento total", "text": "Entregas en tiempo y forma." },
+      { "title": "Ahorro inteligente", "text": "Optimizamos costos sin sacrificar calidad." },
+      { "title": "Atención inmediata", "text": "Respuesta rápida y trato directo." }
+    ],
+    "about_text": "Empresa mexicana con experiencia en obra civil e instalaciones eléctricas.",
+    "contact_intro": "Con gusto te atendemos.",
+    "contact_tel": "+52 55 5555 5555",
+    "contact_email": "tiskamx@outlook.com",
+    "contact_address": "CDMX, México",
+    "clients": [
+      { "name": "Cliente A", "logo": "assets/logos/cliente-a.svg" },
+      { "name": "Cliente B", "logo": "assets/logos/cliente-b.svg" },
+      { "name": "Cliente C", "logo": "assets/logos/cliente-c.svg" },
+      { "name": "Cliente D", "logo": "assets/logos/cliente-d.svg" }
+    ]
+  }

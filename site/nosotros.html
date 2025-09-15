@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Nosotros - TISKA Construcciones y Servicios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    .animate-slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+    .animate-slide-left {
+      animation: slideLeft 0.8s ease-out forwards;
+    }
+    .animate-slide-right {
+      animation: slideRight 0.8s ease-out forwards;
+    }
+    .animate-scale {
+      animation: scale 0.6s ease-out forwards;
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hover-lift {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body class="text-gray-800 overflow-x-hidden">
+  <!-- NAV -->
+  <header class="border-b">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="./" class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full bg-red-700 flex items-center justify-center">
+          <span class="text-white font-bold text-lg">T</span>
+        </div>
+        <span class="font-semibold">TISKA Construcciones y Servicios</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="./" class="hover:text-red-700">Inicio</a>
+        <a href="./nosotros.html" class="hover:text-red-700 text-red-700">Nosotros</a>
+        <a href="./servicios.html" class="hover:text-red-700">Servicios</a>
+        <a href="./servicios-adicionales.html" class="hover:text-red-700">Servicios adicionales</a>
+        <a href="./index.html#contacto" class="hover:text-red-700">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Nosotros</h1>
+      <p class="text-xl text-gray-600">Conoce más sobre TISKA Construcciones y Servicios</p>
+    </div>
+  </section>
+
+  <!-- ABOUT CONTENT -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl font-semibold mb-6">Nuestra Historia</h2>
+          <p class="text-lg leading-relaxed mb-6">
+            TISKA Construcciones y Servicios es una empresa mexicana especializada en construcción, 
+            remodelación y mantenimiento. Con años de experiencia en el sector, nos hemos consolidado 
+            como una empresa confiable y comprometida con la calidad.
+          </p>
+          <p class="text-lg leading-relaxed mb-6">
+            Nuestro equipo de profesionales altamente capacitados trabaja con tecnología de punta 
+            y técnicas vanguardistas para garantizar el cumplimiento en tiempo y forma de cada proyecto.
+          </p>
+        </div>
+        <div class="bg-gray-200 rounded-xl shadow h-80 flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-red-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+              <span class="text-white text-3xl">👥</span>
+            </div>
+            <p class="text-gray-600 font-medium text-lg">Equipo TISKA</p>
+            <p class="text-gray-500 text-sm mt-2">Construcción y Servicios</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold text-center mb-12">Nuestros Valores</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-white text-2xl">✓</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Calidad</h3>
+          <p class="text-gray-600">Garantizamos la más alta calidad en todos nuestros proyectos.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-white text-2xl">⏰</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Puntualidad</h3>
+          <p class="text-gray-600">Cumplimos con los tiempos acordados sin comprometer la calidad.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-white text-2xl">🤝</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Compromiso</h3>
+          <p class="text-gray-600">Trabajamos con dedicación y compromiso hacia nuestros clientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 border-t">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm">&copy; <span id="year"></span> TISKA Construcciones y Servicios</p>
+      <div class="text-sm">Lun–Vie 8:30–18:00 · Sáb 8:30–13:00</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
