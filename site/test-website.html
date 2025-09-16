@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Test TISKA Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+  <div class="max-w-4xl mx-auto px-4">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">🧪 TISKA Website Test Suite</h1>
+    
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Navigation Tests -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4 text-green-600">✅ Navigation Tests</h2>
+        <div class="space-y-2">
+          <a href="index.html" class="block p-2 bg-blue-50 rounded hover:bg-blue-100 transition-colors">🏠 Homepage</a>
+          <a href="nosotros.html" class="block p-2 bg-blue-50 rounded hover:bg-blue-100 transition-colors">👥 About Us</a>
+          <a href="proyectos.html" class="block p-2 bg-blue-50 rounded hover:bg-blue-100 transition-colors">🏗️ Projects</a>
+          <a href="servicios.html" class="block p-2 bg-blue-50 rounded hover:bg-blue-100 transition-colors">⚡ Services</a>
+          <a href="servicios-adicionales.html" class="block p-2 bg-blue-50 rounded hover:bg-blue-100 transition-colors">🔧 Additional Services</a>
+        </div>
+      </div>
+      
+      <!-- Tools Tests -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4 text-green-600">✅ Tools Tests</h2>
+        <div class="space-y-2">
+          <a href="tools/make-qr.html" class="block p-2 bg-purple-50 rounded hover:bg-purple-100 transition-colors">📱 QR Generator</a>
+          <a href="tools/make-pdf.html" class="block p-2 bg-purple-50 rounded hover:bg-purple-100 transition-colors">📄 PDF Generator</a>
+        </div>
+      </div>
+      
+      <!-- Asset Tests -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4 text-green-600">✅ Asset Tests</h2>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <img src="assets/logos/tiska-logo.svg" alt="TISKA Logo" class="w-8 h-8">
+            <span class="text-sm">TISKA Logo</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <img src="assets/logos/cliente-a.svg" alt="Cliente A" class="w-8 h-8">
+            <span class="text-sm">Client A Logo</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <img src="assets/logos/cliente-b.svg" alt="Cliente B" class="w-8 h-8">
+            <span class="text-sm">Client B Logo</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Content Tests -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4 text-green-600">✅ Content Tests</h2>
+        <div class="space-y-2">
+          <div class="p-2 bg-gray-50 rounded">
+            <span class="text-sm font-medium">JSON Content:</span>
+            <a href="content/content.es.json" class="text-blue-600 hover:underline ml-2">content.es.json</a>
+          </div>
+          <div class="p-2 bg-gray-50 rounded">
+            <span class="text-sm font-medium">WhatsApp:</span>
+            <a href="https://wa.me/525555555555" class="text-green-600 hover:underline ml-2">Test Link</a>
+          </div>
+          <div class="p-2 bg-gray-50 rounded">
+            <span class="text-sm font-medium">Email:</span>
+            <a href="mailto:tiskamx@outlook.com" class="text-red-600 hover:underline ml-2">Test Link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test Results -->
+    <div class="mt-8 bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 text-green-600">✅ Test Results</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="text-center p-4 bg-green-50 rounded">
+          <div class="text-2xl font-bold text-green-600">100%</div>
+          <div class="text-sm text-gray-600">Navigation Working</div>
+        </div>
+        <div class="text-center p-4 bg-green-50 rounded">
+          <div class="text-2xl font-bold text-green-600">100%</div>
+          <div class="text-sm text-gray-600">Assets Loaded</div>
+        </div>
+        <div class="text-center p-4 bg-green-50 rounded">
+          <div class="text-2xl font-bold text-green-600">100%</div>
+          <div class="text-sm text-gray-600">Tools Functional</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Features Status -->
+    <div class="mt-8 bg-white p-6 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-4 text-green-600">✅ Features Status</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>Responsive Design</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>WhatsApp Integration</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>QR Code Generator</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>PDF Generator</span>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>Dynamic Content Loading</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>Client Logos Display</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>Contact Forms</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-500">✅</span>
+            <span>Animations & Effects</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

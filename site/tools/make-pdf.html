@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Generar PDF - TISKA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-50">
+  <div class="bg-white p-6 rounded-xl shadow w-full max-w-2xl">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800">Generar PDF - TISKA Construcciones</h1>
+    
+    <!-- PDF Content Form -->
+    <div class="space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Título del Documento</label>
+        <input id="pdfTitle" type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" 
+               value="Propuesta de Construcción - TISKA" placeholder="Ingrese el título del documento">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Cliente</label>
+        <input id="pdfClient" type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" 
+               placeholder="Nombre del cliente">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Descripción del Proyecto</label>
+        <textarea id="pdfDescription" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" 
+                  placeholder="Descripción detallada del proyecto...">Construcción y servicios especializados en obra civil e instalaciones eléctricas. Ofrecemos soluciones integrales con la más alta calidad, precio competitivo, compromiso y entrega en tiempo.</textarea>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Fecha de Inicio</label>
+          <input id="pdfStartDate" type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Fecha de Entrega</label>
+          <input id="pdfEndDate" type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Presupuesto Estimado</label>
+        <input id="pdfBudget" type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" 
+               placeholder="$0.00 MXN">
+      </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="mt-8 flex gap-4">
+      <button id="btnGeneratePDF" class="flex-1 bg-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-800 transition-colors duration-300 flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Generar PDF
+      </button>
+      <button id="btnPreview" class="px-6 py-3 border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition-colors duration-300">
+        Vista Previa
+      </button>
+    </div>
+    
+    <!-- Preview Area -->
+    <div id="previewArea" class="mt-6 p-6 border border-gray-200 rounded-lg bg-gray-50 hidden">
+      <h3 class="text-lg font-semibold mb-4">Vista Previa del PDF</h3>
+      <div id="pdfPreview" class="bg-white p-6 rounded border">
+        <!-- PDF content will be generated here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const { jsPDF } = window.jspdf;
+    
+    // Set default dates
+    const today = new Date();
+    const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+    document.getElementById('pdfStartDate').value = today.toISOString().split('T')[0];
+    document.getElementById('pdfEndDate').value = nextMonth.toISOString().split('T')[0];
+    
+    document.getElementById('btnPreview').onclick = () => {
+      generatePreview();
+    };
+    
+    document.getElementById('btnGeneratePDF').onclick = () => {
+      generatePDF();
+    };
+    
+    function generatePreview() {
+      const title = document.getElementById('pdfTitle').value;
+      const client = document.getElementById('pdfClient').value;
+      const description = document.getElementById('pdfDescription').value;
+      const startDate = document.getElementById('pdfStartDate').value;
+      const endDate = document.getElementById('pdfEndDate').value;
+      const budget = document.getElementById('pdfBudget').value;
+      
+      const preview = document.getElementById('pdfPreview');
+      preview.innerHTML = `
+        <div class="text-center mb-6">
+          <h1 class="text-2xl font-bold text-gray-800 mb-2">${title}</h1>
+          <p class="text-gray-600">TISKA Construcciones y Servicios</p>
+        </div>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-semibold text-gray-800">Cliente:</h3>
+            <p class="text-gray-600">${client || 'Por definir'}</p>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-800">Descripción del Proyecto:</h3>
+            <p class="text-gray-600">${description}</p>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <h3 class="font-semibold text-gray-800">Fecha de Inicio:</h3>
+              <p class="text-gray-600">${startDate}</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Fecha de Entrega:</h3>
+              <p class="text-gray-600">${endDate}</p>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-800">Presupuesto Estimado:</h3>
+            <p class="text-gray-600">${budget || 'Por definir'}</p>
+          </div>
+        </div>
+        
+        <div class="mt-8 pt-4 border-t border-gray-200">
+          <div class="text-sm text-gray-500">
+            <p><strong>Contacto:</strong> tiskamx@outlook.com | +52 55 5555 5555</p>
+            <p><strong>Dirección:</strong> Monte Alban 604, Colonia letran valle, CP 03650, Benito Juarez, CDMX</p>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('previewArea').classList.remove('hidden');
+    }
+    
+    function generatePDF() {
+      const title = document.getElementById('pdfTitle').value;
+      const client = document.getElementById('pdfClient').value;
+      const description = document.getElementById('pdfDescription').value;
+      const startDate = document.getElementById('pdfStartDate').value;
+      const endDate = document.getElementById('pdfEndDate').value;
+      const budget = document.getElementById('pdfBudget').value;
+      
+      const doc = new jsPDF();
+      
+      // Header
+      doc.setFontSize(20);
+      doc.setFont(undefined, 'bold');
+      doc.text(title, 20, 30);
+      
+      doc.setFontSize(12);
+      doc.setFont(undefined, 'normal');
+      doc.text('TISKA Construcciones y Servicios', 20, 40);
+      
+      // Content
+      let yPosition = 60;
+      
+      doc.setFontSize(14);
+      doc.setFont(undefined, 'bold');
+      doc.text('Cliente:', 20, yPosition);
+      doc.setFont(undefined, 'normal');
+      doc.text(client || 'Por definir', 50, yPosition);
+      yPosition += 15;
+      
+      doc.setFont(undefined, 'bold');
+      doc.text('Descripción del Proyecto:', 20, yPosition);
+      yPosition += 10;
+      doc.setFont(undefined, 'normal');
+      const descriptionLines = doc.splitTextToSize(description, 170);
+      doc.text(descriptionLines, 20, yPosition);
+      yPosition += descriptionLines.length * 6 + 10;
+      
+      doc.setFont(undefined, 'bold');
+      doc.text('Fechas:', 20, yPosition);
+      yPosition += 10;
+      doc.setFont(undefined, 'normal');
+      doc.text(`Inicio: ${startDate}`, 20, yPosition);
+      doc.text(`Entrega: ${endDate}`, 100, yPosition);
+      yPosition += 15;
+      
+      doc.setFont(undefined, 'bold');
+      doc.text('Presupuesto Estimado:', 20, yPosition);
+      doc.setFont(undefined, 'normal');
+      doc.text(budget || 'Por definir', 100, yPosition);
+      yPosition += 30;
+      
+      // Footer
+      doc.setFontSize(10);
+      doc.text('Contacto: tiskamx@outlook.com | +52 55 5555 5555', 20, yPosition);
+      yPosition += 6;
+      doc.text('Dirección: Monte Alban 604, Colonia letran valle, CP 03650, Benito Juarez, CDMX', 20, yPosition);
+      
+      // Save the PDF
+      doc.save(`${title.replace(/\s+/g, '_')}.pdf`);
+    }
+  </script>
+</body>
+</html>
