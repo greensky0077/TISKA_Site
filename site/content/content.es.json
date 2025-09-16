@@ -11,7 +11,7 @@
     "contact_intro": "Con gusto te atendemos.",
     "contact_tel": "+52 55 5555 5555",
     "contact_email": "tiskamx@outlook.com",
-    "contact_address": "Monte Alban 604<br>Colonia letran valle<br>CP 03650<br>Benito Juarez, CDMX",
+    "contact_address": "Monte Alban 604 Colonia letran valle CP 03650 Benito Juarez, CDMX",
     "clients": [
       { "name": "Cliente A", "logo": "assets/logos/cliente-a.svg" },
       { "name": "Cliente B", "logo": "assets/logos/cliente-b.svg" },
