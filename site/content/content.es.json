@@ -2,16 +2,16 @@
     "hero_title": "Hacemos realidad grandes ideas",
     "hero_sub": "Construcción, remodelación y mantenimiento con cumplimiento en tiempo y calidad.",
     "features": [
-      { "title": "Tecnología de punta", "text": "Procesos modernos para máxima calidad." },
-      { "title": "Cumplimiento total", "text": "Entregas en tiempo y forma." },
-      { "title": "Ahorro inteligente", "text": "Optimizamos costos sin sacrificar calidad." },
-      { "title": "Atención inmediata", "text": "Respuesta rápida y trato directo." }
+      { "title": "Calidad", "text": "Garantizamos la más alta calidad en todos nuestros proyectos." },
+      { "title": "Precio", "text": "Ofrecemos precios competitivos sin comprometer la calidad." },
+      { "title": "Compromiso", "text": "Trabajamos con dedicación y compromiso hacia nuestros clientes." },
+      { "title": "Entrega en tiempo", "text": "Cumplimos con los tiempos acordados sin comprometer la calidad." }
     ],
-    "about_text": "Empresa mexicana con experiencia en obra civil e instalaciones eléctricas.",
+    "about_text": "Empresa mexicana con experiencia en obra civil e instalaciones eléctricas. Nos especializamos en brindar soluciones integrales de construcción con la más alta calidad, precio competitivo, compromiso y entrega en tiempo.",
     "contact_intro": "Con gusto te atendemos.",
     "contact_tel": "+52 55 5555 5555",
     "contact_email": "tiskamx@outlook.com",
-    "contact_address": "CDMX, México",
+    "contact_address": "Monte Alban 604<br>Colonia letran valle<br>CP 03650<br>Benito Juarez, CDMX",
     "clients": [
       { "name": "Cliente A", "logo": "assets/logos/cliente-a.svg" },
       { "name": "Cliente B", "logo": "assets/logos/cliente-b.svg" },
