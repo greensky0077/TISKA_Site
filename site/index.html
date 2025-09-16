@@ -84,25 +84,25 @@
       transform: translateX(0);
     }
     .slider-container {
-      min-height: 180px;
+      min-height: 160px;
     }
     .slider-slide {
-      min-height: 180px;
+      min-height: 160px;
     }
     @media (max-width: 768px) {
       .slider-container {
-        min-height: 140px;
+        min-height: 120px;
       }
       .slider-slide {
-        min-height: 140px;
+        min-height: 120px;
       }
     }
     @media (max-width: 480px) {
       .slider-container {
-        min-height: 120px;
+        min-height: 100px;
       }
       .slider-slide {
-        min-height: 120px;
+        min-height: 100px;
       }
     }
   </style>
@@ -474,18 +474,18 @@
   </section>
 
   <!-- CLIENTS SLIDER -->
-  <section class="py-12 sm:py-16 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+  <section class="py-8 sm:py-12 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
     <!-- Background decoration -->
     <div class="absolute top-0 left-0 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
     
-    <div class="relative z-10 max-w-6xl mx-auto px-2 sm:px-4 lg:px-6">
-      <div class="text-center mb-8 sm:mb-12">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 animate-slide-up">
+    <div class="relative z-10 max-w-5xl mx-auto px-1 sm:px-3 lg:px-4">
+      <div class="text-center mb-6 sm:mb-8">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 animate-slide-up">
           Nuestros 
           <span class="gradient-text">clientes</span>
         </h2>
-        <p class="text-lg sm:text-xl text-gray-600 animate-slide-up" style="animation-delay: 0.2s;">
+        <p class="text-base sm:text-lg text-gray-600 animate-slide-up" style="animation-delay: 0.2s;">
           Empresas que confían en nosotros
         </p>
       </div>
@@ -493,32 +493,32 @@
       <!-- Slider Container -->
       <div class="relative w-full">
         <!-- Slider Wrapper -->
-        <div class="overflow-hidden rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl bg-white/5 backdrop-blur-sm border border-white/10 slider-container">
+        <div class="overflow-hidden rounded-lg sm:rounded-xl shadow-lg sm:shadow-xl bg-white/5 backdrop-blur-sm border border-white/10 slider-container">
           <div id="slider-container" class="flex transition-transform duration-500 ease-in-out slider-slide">
             <!-- Slider slides will be generated here -->
           </div>
         </div>
         
         <!-- Navigation Arrows -->
-        <button id="prevBtn" class="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 bg-white/95 hover:bg-white text-gray-800 p-1.5 sm:p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-10">
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="prevBtn" class="absolute left-0.5 sm:left-1 top-1/2 transform -translate-y-1/2 bg-white/95 hover:bg-white text-gray-800 p-1 sm:p-1.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 z-10">
+          <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <button id="nextBtn" class="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 bg-white/95 hover:bg-white text-gray-800 p-1.5 sm:p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-10">
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="nextBtn" class="absolute right-0.5 sm:right-1 top-1/2 transform -translate-y-1/2 bg-white/95 hover:bg-white text-gray-800 p-1 sm:p-1.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110 z-10">
+          <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </button>
         
         <!-- Dots Indicator -->
-        <div id="dots-container" class="flex justify-center mt-3 sm:mt-4 space-x-2">
+        <div id="dots-container" class="flex justify-center mt-2 sm:mt-3 space-x-1.5">
           <!-- Dots will be generated here -->
         </div>
       </div>
       
-      <!-- Fallback Grid for smaller screens -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 items-center mt-6 sm:mt-8" id="clients_grid"></div>
+      <!-- Fallback Grid for smaller screens (hidden by default) -->
+      <div class="hidden grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 items-center mt-6 sm:mt-8" id="clients_grid"></div>
     </div>
   </section>
 
