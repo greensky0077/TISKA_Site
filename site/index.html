@@ -451,7 +451,7 @@
     </div>
   </section>
 
-  <!-- CLIENTS -->
+  <!-- CLIENTS SLIDER -->
   <section class="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
     <!-- Background decoration -->
     <div class="absolute top-0 left-0 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
@@ -468,7 +468,35 @@
         </p>
       </div>
       
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 items-center" id="clients_grid"></div>
+      <!-- Slider Container -->
+      <div class="relative">
+        <!-- Slider Wrapper -->
+        <div class="overflow-hidden rounded-2xl shadow-2xl">
+          <div id="slider-container" class="flex transition-transform duration-500 ease-in-out">
+            <!-- Slider slides will be generated here -->
+          </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-10">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-10">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        
+        <!-- Dots Indicator -->
+        <div id="dots-container" class="flex justify-center mt-6 space-x-2">
+          <!-- Dots will be generated here -->
+        </div>
+      </div>
+      
+      <!-- Fallback Grid for smaller screens -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 items-center mt-8" id="clients_grid"></div>
     </div>
   </section>
 
@@ -651,6 +679,147 @@
       }
       lastScrollY = window.scrollY;
     });
+
+    // Slider functionality
+    let currentSlide = 0;
+    let slidesPerView = 4; // Default number of slides visible at once
+    const sliderContainer = document.getElementById('slider-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dots-container');
+    
+    // Responsive slides per view
+    function updateSlidesPerView() {
+      if (window.innerWidth < 640) {
+        slidesPerView = 1; // Mobile: 1 slide
+      } else if (window.innerWidth < 1024) {
+        slidesPerView = 2; // Tablet: 2 slides
+      } else {
+        slidesPerView = 4; // Desktop: 4 slides
+      }
+    }
+    
+    // Update on resize
+    window.addEventListener('resize', () => {
+      updateSlidesPerView();
+      createSlides();
+      createDots();
+      goToSlide(0);
+    });
+    
+    // Generate slider images
+    const sliderImages = [];
+    for (let i = 1; i <= 12; i++) {
+      sliderImages.push(`assets/slider/${i}.png`);
+    }
+    
+    // Create slides
+    function createSlides() {
+      sliderContainer.innerHTML = '';
+      const totalSlides = Math.ceil(sliderImages.length / slidesPerView);
+      
+      for (let i = 0; i < totalSlides; i++) {
+        const slide = document.createElement('div');
+        slide.className = 'w-full flex-shrink-0 flex';
+        slide.style.width = '100%';
+        
+        for (let j = 0; j < slidesPerView; j++) {
+          const imageIndex = i * slidesPerView + j;
+          if (imageIndex < sliderImages.length) {
+            const imageContainer = document.createElement('div');
+            // Responsive width classes
+            if (slidesPerView === 1) {
+              imageContainer.className = 'w-full p-2';
+            } else if (slidesPerView === 2) {
+              imageContainer.className = 'w-1/2 p-3';
+            } else {
+              imageContainer.className = 'w-1/4 p-4';
+            }
+            
+            const image = document.createElement('img');
+            image.src = sliderImages[imageIndex];
+            image.alt = `Cliente ${imageIndex + 1}`;
+            // Responsive height classes
+            const heightClass = slidesPerView === 1 ? 'h-48' : slidesPerView === 2 ? 'h-40' : 'h-32';
+            image.className = `w-full ${heightClass} object-cover rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105`;
+            
+            imageContainer.appendChild(image);
+            slide.appendChild(imageContainer);
+          }
+        }
+        
+        sliderContainer.appendChild(slide);
+      }
+    }
+    
+    // Create dots
+    function createDots() {
+      dotsContainer.innerHTML = '';
+      const totalSlides = Math.ceil(sliderImages.length / slidesPerView);
+      
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-red-600' : 'bg-gray-300'}`;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+    
+    // Go to specific slide
+    function goToSlide(slideIndex) {
+      const totalSlides = Math.ceil(sliderImages.length / slidesPerView);
+      currentSlide = slideIndex;
+      
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      
+      const translateX = -currentSlide * 100;
+      sliderContainer.style.transform = `translateX(${translateX}%)`;
+      
+      // Update dots
+      const dots = dotsContainer.querySelectorAll('button');
+      dots.forEach((dot, index) => {
+        dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-red-600' : 'bg-gray-300'}`;
+      });
+    }
+    
+    // Next slide
+    function nextSlide() {
+      const totalSlides = Math.ceil(sliderImages.length / slidesPerView);
+      goToSlide(currentSlide + 1);
+    }
+    
+    // Previous slide
+    function prevSlide() {
+      const totalSlides = Math.ceil(sliderImages.length / slidesPerView);
+      goToSlide(currentSlide - 1);
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    // Auto-play slider
+    let autoPlayInterval;
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
+    }
+    
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+    
+    // Initialize slider
+    if (sliderContainer) {
+      updateSlidesPerView(); // Set initial responsive state
+      createSlides();
+      createDots();
+      startAutoPlay();
+      
+      // Pause on hover
+      sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+      sliderContainer.addEventListener('mouseleave', startAutoPlay);
+    }
   </script>
 </body>
 </html>
